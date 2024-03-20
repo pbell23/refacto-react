@@ -1,6 +1,5 @@
 import React from 'react';
 import { extractDomainParts } from '../../lib/domainFilter';
-import { threadId } from 'worker_threads';
 
 interface State {
   countries: string[],
@@ -15,8 +14,6 @@ interface Props {
 class DomainFilter extends React.Component<Props, State> {
   componentDidMount() {
     const { domains } = this.props
-
-    const s: any = {};
 
     const domainParts = extractDomainParts(domains)
 
