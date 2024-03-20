@@ -99,23 +99,29 @@ What do we expect from you:
 
 2. Transition to Functional Components: The DomainFilter was refactored from a class component to a functional component using React hooks, aligning with modern React best practices and simplifying component structure.
 
+3. Hook Integration for State Logic: The FilterDomain component now utilizes custom hooks for improved state management and reusability. The useDomainParts hook abstracts the logic for computing distinct lists of countries, classifications, and subclassifications, making the component cleaner and more modular.
+
+4. Modularization with Subcomponents: To further enhance modularity and readability, FilterDomain has been refactored to include subcomponents for each select input: CountrySelect, ClassificationSelect, and SubclassificationSelect.
+
 ### Future Enhancements
 
 Given more time, the following enhancements could further improve the component:
 
-1. In a real world application, domain data should be handled asynchronously as if it was a remote source (HTTP Api, Database call, read from file). This involves managing loading states, handling errors gracefully, and ensuring the component remains responsive and efficient when dealing with asynchronous data. We could use simple `useEffect` and `useState` hooks or specialized libraries like react-query or SWR based on the complexity of what we want to achieve.
+1. In a real world application, domain data should be handled asynchronously as if it was a remote source (HTTP Api, Database call, read from file). This involves managing loading states, handling errors gracefully, and ensuring the component remains responsive and efficient when dealing with asynchronous data. We could use simple `useEffect` and `useState` hooks or specialized libraries like React Query or SWR based on the complexity of what we want to achieve.
+
+2. We might want to customize a bit more the sub components by lifting up their local state (onChange functions) to get back the selected values in the main component.
 
 ### Using the Modified Code in Other Components
 
-1. Integrate the lib function:
+1. Integrate the hook:
 
-```javascript
-import { extractDomainParts } from './lib/domainFilters';
+```typescript
+import useDomainParts from './hooks/useDomainParts';
 ```
 
 2. Use this function to process your domain data:
 
-```javascript
+```typescript
 const { countries, classifications, subClassifications } =
-  extractDomainParts(domains);
+  useDomainParts(domains);
 ```
