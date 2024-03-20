@@ -125,3 +125,9 @@ import useDomainParts from './hooks/useDomainParts';
 const { countries, classifications, subClassifications } =
   useDomainParts(domains);
 ```
+
+### Notes
+
+In a new React project, I aim to keep complexity to a minimum. While Redux is a powerful tool for managing application state, it introduces a level of complexity that may not be necessary for all projects. For new projects, my preference is to start with React's Context API for simpler state management needs and then consider smaller, more straightforward libraries like Zustand as the project evolves. This approach allows me to maintain simplicity and flexibility, adapting the state management strategy as my needs become more clear.
+
+My vision is very influenced by the fact that I never needed it in all the frontend projects I participated in (probably they were not big enough). Either way, I lean toward a crescendo approach to adding complexity to any project.
