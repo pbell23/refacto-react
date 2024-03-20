@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import ClassificationSelect from './ClassificationSelect.component';
+import CountrySelect from './CountrySelect.component';
+import SubclassificationSelect from './SubclassificationSelect.component';
 import { extractDomainParts } from '../../lib/domainFilter';
 
 interface IDomainParts {
@@ -28,21 +31,9 @@ const DomainFilter: React.FC<Props> = ({ domains }) => {
   }, [domains])
 
   return (<>
-    <select name="countries" multiple>
-      {countries.map(country => (
-        <option value={country} key={country}>{country}</option>
-      ))}
-    </select>
-    <select name="classifications" multiple>
-      {classifications.map(classification => (
-        <option value={classification} key={classification}>{classification}</option>
-      ))}
-    </select>
-    <select name="subClassifications" multiple>
-      {subClassifications.map(subClassification => (
-        <option value={subClassification} key={subClassification}>{subClassification}</option>
-      ))}
-    </select>
+    <CountrySelect countries={countries} />
+    <ClassificationSelect classifications={classifications} />
+    <SubclassificationSelect subClassifications={subClassifications} />
   </>)
 }
 
